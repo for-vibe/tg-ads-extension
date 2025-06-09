@@ -18,7 +18,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run package:win
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: windows-build
           path: release/TelegramAdsDesktop-win32-x64
