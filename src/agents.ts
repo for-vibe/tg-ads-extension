@@ -29,9 +29,22 @@ export const agents: Record<string, AgentFunction | undefined> = {
    */
   highlightImages: (webview) => {
     const js = `(() => {
-      const style = document.createElement('style');
-      style.textContent = 'img { outline: 2px solid red; }';
-      document.head.appendChild(style);
+      const addStyle = (doc) => {
+        const style = doc.createElement('style');
+        style.textContent = 'img { outline: 2px solid red; }';
+        doc.head.appendChild(style);
+      };
+      addStyle(document);
+      document.querySelectorAll('iframe').forEach((frame) => {
+        try {
+          if (frame.contentDocument) {
+            addStyle(frame.contentDocument);
+            frame.style.height = '100%';
+          }
+        } catch (_) {
+          // ignore cross-origin iframes
+        }
+      });
     })();`;
     webview.executeJavaScript(js);
   }
