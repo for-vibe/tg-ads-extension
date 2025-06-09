@@ -13,13 +13,24 @@ export const agents: Record<string, AgentFunction | undefined> = {
   highlightClicks: (webview) => {
     const js = `(() => {
       const style = document.createElement('style');
-      style.textContent = 
+      style.textContent =
         'td[style*="coldp-clicks"] .pr-cell a.pr-link {' +
         ' border: 1px solid #0a0;' +
         ' background-color: #b6ffb6;' +
         ' border-radius: 4px;' +
         ' padding: 2px 4px;' +
         '}';
+      document.head.appendChild(style);
+    })();`;
+    webview.executeJavaScript(js);
+  },
+  /**
+   * Highlight all images with a red outline.
+   */
+  highlightImages: (webview) => {
+    const js = `(() => {
+      const style = document.createElement('style');
+      style.textContent = 'img { outline: 2px solid red; }';
       document.head.appendChild(style);
     })();`;
     webview.executeJavaScript(js);
