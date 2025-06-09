@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Telegram Ads Desktop</title>
+</head>
+<body>
+  <webview id="tg-ads" src="https://ads.telegram.org/" style="width:100%; height:100%;"></webview>
+  <script>
+    const webview = document.getElementById('tg-ads');
+    webview.addEventListener('did-finish-load', () => {
+      window.api.runAgent('sample');
+    });
+  </script>
+</body>
+</html>
