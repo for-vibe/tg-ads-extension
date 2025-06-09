@@ -9,11 +9,13 @@ describe('agents', () => {
   });
 
   test('highlightImages adds style to document and iframe', () => {
-    const html = fs.readFileSync(path.join(__dirname, 'fixtures/sample.html'), 'utf8');
+    const html = fs.readFileSync(path.join(__dirname, 'fixtures/index.html'), 'utf8');
     const dom = new JSDOM(html, { runScripts: 'dangerously' });
 
-    // Attach a DOM to the iframe for testing
-    const iframe = dom.window.document.getElementById('inner-frame') as HTMLIFrameElement;
+    // Attach a DOM to an iframe for testing
+    const iframe = dom.window.document.createElement('iframe');
+    iframe.id = 'inner-frame';
+    dom.window.document.body.appendChild(iframe);
     const inner = new JSDOM('<html><body><img id="fimg"></body></html>', { runScripts: 'dangerously' });
     Object.defineProperty(iframe, 'contentDocument', { value: inner.window.document });
 

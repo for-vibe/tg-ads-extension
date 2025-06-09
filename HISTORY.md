@@ -5,4 +5,5 @@ This file keeps track of tasks and changes for this project. Agents should check
 ## Tasks
 
 - Сохраняй последнюю задачу в файле HISTORY.md. Добавь описание для агентов, что список заданий и изменений можно смотреть в этом файле.
+- Добавить html-файл главной страницы и переписать тесты для интеграционного тестирования через webview.
 
