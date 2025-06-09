@@ -3,9 +3,9 @@ import path from 'path';
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    fullscreen: true,
+    width: 1024,
+    height: 768,
+    fullscreen: false,
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
