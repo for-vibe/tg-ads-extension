@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Telegram Ads Desktop</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    #tg-ads {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <webview id="tg-ads" src="https://ads.telegram.org/" style="width:100%; height:100%;"></webview>
+  <webview id="tg-ads" src="https://ads.telegram.org/"></webview>
   <script>
     const webview = document.getElementById('tg-ads');
     webview.addEventListener('did-finish-load', () => {
